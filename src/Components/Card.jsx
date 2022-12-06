@@ -6,9 +6,15 @@ const Wrapper = styled.div`
   cursor: pointer;
   background-color: #fff;
   min-height: 30px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   img {
-    max-height: 90%;
+    max-height: 80%;
+    max-width: 80%;
   }
 
   box-shadow: -10px -8px 0px rgb(167 243 208);
@@ -21,10 +27,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Card = () => {
+const Card = ({ url, name }) => {
   return (
     <Wrapper tabIndex={0}>
-      <img src={require("../utils/pokemon/ivysaur.png")} alt="" />
+      <img src={url} alt="" />
+      <p>{name}</p>
     </Wrapper>
   );
 };

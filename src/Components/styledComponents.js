@@ -37,8 +37,8 @@ export const Text = styled.div`
 
 export const CardContainer = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, 8rem);
-  grid-template-columns: repeat(4, 8rem);
+  grid-template-rows: repeat(3, 12rem);
+  grid-template-columns: repeat(4, 10rem);
   justify-content: center;
   gap: 1.8rem;
 `;

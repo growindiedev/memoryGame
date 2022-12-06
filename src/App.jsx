@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Title,
@@ -8,8 +8,16 @@ import {
   Button,
 } from "./Components/styledComponents";
 import Card from "./Components/Card";
+import pokemonsArray from "./utils/pokemonData";
 
 function App() {
+  const [pokemons, setPokemons] = useState([...pokemonsArray]);
+  console.log(pokemons);
+
+  let cards = pokemons.map((pokemon) => (
+    <Card key={pokemon.num} {...pokemon} />
+  ));
+
   return (
     <Container>
       <Title>Memory Game</Title>
@@ -17,20 +25,7 @@ function App() {
         <Text>High Score: 100</Text>
         <Text>Current Score: 0</Text>
       </Status>
-      <CardContainer>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </CardContainer>
+      <CardContainer>{cards}</CardContainer>
       <Button>Reset</Button>
     </Container>
   );
