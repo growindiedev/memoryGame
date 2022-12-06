@@ -40,7 +40,7 @@ export const CardContainer = styled.div`
   grid-template-rows: repeat(3, 8rem);
   grid-template-columns: repeat(4, 8rem);
   justify-content: center;
-  gap: 1rem;
+  gap: 1.8rem;
 `;
 
 export const Button = styled.button`
