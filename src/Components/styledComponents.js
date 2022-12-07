@@ -25,7 +25,8 @@ export const Title = styled.h1`
 export const Status = styled.div`
   min-height: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10rem;
   align-items: center;
 `;
 
@@ -38,7 +39,7 @@ export const Text = styled.div`
 export const CardContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 10rem);
-  grid-template-columns: repeat(4, 8rem);
+  grid-template-columns: repeat(6, 8rem);
   justify-content: center;
   gap: 1.8rem;
 `;
