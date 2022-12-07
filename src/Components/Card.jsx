@@ -19,16 +19,16 @@ const Wrapper = styled.div`
   }
 
   box-shadow: -10px -8px 0px rgb(167 243 208);
+  :focus {
+    animation: flip; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 0.5s; /* don't forget to set a duration! */
+  }
+  :active {
+    animation: none;
+  }
 `;
 
-// :focus {
-//   animation: flip; /* referring directly to the animation's @keyframe declaration */
-//   animation-duration: 0.7s; /* don't forget to set a duration! */
-// }
-// :active {
-//   animation: none;
-// }
-const Card = ({ pokemon, setPokemons }) => {
+const Card = ({ pokemon, setPokemons, setHighScore, currentScore }) => {
   const handleCard = () => {
     if (!pokemon.isSelected) {
       setPokemons((prev) => [
@@ -37,6 +37,12 @@ const Card = ({ pokemon, setPokemons }) => {
       ]);
     } else {
       setPokemons(pokemonsArray);
+      setHighScore((previousScore) => {
+        if (previousScore < currentScore) {
+          return currentScore;
+        }
+        return previousScore;
+      });
     }
   };
 

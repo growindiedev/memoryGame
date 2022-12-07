@@ -11,7 +11,8 @@ import Card from "./Components/Card";
 import pokemonsArray from "./utils/pokemonData";
 
 function App() {
-  const [pokemons, setPokemons] = useState([...pokemonsArray]);
+  const [pokemons, setPokemons] = useState(pokemonsArray);
+  const [highScore, setHighScore] = useState(0);
 
   function shuffleArray(array) {
     let i = array.length - 1;
@@ -24,7 +25,10 @@ function App() {
     return array;
   }
 
-  const resetScore = () => {};
+  const resetScore = () => {
+    setPokemons(pokemonsArray);
+    setHighScore(0);
+  };
 
   const calculateScore = () => {
     let score = 0;
@@ -37,20 +41,24 @@ function App() {
   };
 
   const cards = shuffleArray(pokemons).map((pokemon) => (
-    <Card key={pokemon.num} pokemon={pokemon} setPokemons={setPokemons} />
+    <Card
+      //key={pokemon.num}
+      pokemon={pokemon}
+      setPokemons={setPokemons}
+      currentScore={calculateScore()}
+      setHighScore={setHighScore}
+    />
   ));
-
-  console.log("whoop", pokemons);
 
   return (
     <Container>
       <Title>Memory Game</Title>
       <Status>
-        <Text>High Score: 100</Text>
+        <Text>High Score: {highScore}</Text>
         <Text>Current Score: {calculateScore()}</Text>
       </Status>
       <CardContainer>{cards}</CardContainer>
-      <Button>Reset</Button>
+      <Button onClick={resetScore}>Reset</Button>
     </Container>
   );
 }
