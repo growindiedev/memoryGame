@@ -28,7 +28,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Card = ({ pokemon, setPokemons, setHighScore, currentScore }) => {
+const Card = ({
+  pokemon,
+  setPokemons,
+  setHighScore,
+  currentScore,
+  shuffleArray,
+}) => {
   const handleCard = () => {
     if (!pokemon.isSelected) {
       setPokemons((prev) => [
@@ -36,7 +42,7 @@ const Card = ({ pokemon, setPokemons, setHighScore, currentScore }) => {
         { ...pokemon, isSelected: true },
       ]);
     } else {
-      setPokemons(pokemonsArray);
+      setPokemons(shuffleArray(pokemonsArray));
       setHighScore((previousScore) => {
         if (previousScore < currentScore) {
           return currentScore;

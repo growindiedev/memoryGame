@@ -25,11 +25,6 @@ function App() {
     return array;
   }
 
-  const resetScore = () => {
-    setPokemons(pokemonsArray);
-    setHighScore(0);
-  };
-
   const calculateScore = () => {
     let score = 0;
     pokemons.forEach((poke) => {
@@ -40,6 +35,11 @@ function App() {
     return score;
   };
 
+  const resetScore = () => {
+    setPokemons(shuffleArray(pokemonsArray));
+    setHighScore(0);
+  };
+
   const cards = shuffleArray(pokemons).map((pokemon) => (
     <Card
       //key={pokemon.num}
@@ -47,6 +47,7 @@ function App() {
       setPokemons={setPokemons}
       currentScore={calculateScore()}
       setHighScore={setHighScore}
+      shuffleArray={shuffleArray}
     />
   ));
 
